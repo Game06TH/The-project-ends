@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+{% block content %}
+<h2>เพิ่มรถจักรยานยนต์</h2>
+<form method="POST" enctype="multipart/form-data" class="form-box">
+    รุ่นรถ: <input name="model"><br>
+    ปี: <input name="year"><br>
+    เลขไมล์: <input name="mileage"><br>
+    ราคา: <input name="price"><br>
+    รูปภาพ: <input type="file" name="images" multiple><br>
+    <input type="submit" value="เพิ่มรถ">
+</form>
+{% endblock %}

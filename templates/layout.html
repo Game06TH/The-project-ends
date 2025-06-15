@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title if title else "Motorbike Shop" }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<header><h1>🛵 Motorbike Shop</h1>
+<nav>
+    <a href="/">หน้าแรก</a> |
+    <a href="/report_problem">แจ้งปัญหา</a> |
+    {% if session.get('role') == 'admin' %}<a href="/add_bike">เพิ่มรถ</a> |{% endif %}
+    {% if session.get('user_id') %}<a href="/logout">ออก</a>{% else %}<a href="/login">เข้าสู่ระบบ</a>{% endif %}
+</nav></header>
+<main>{% with messages = get_flashed_messages() %}
+{% if messages %}<ul class="flash">{% for msg in messages %}<li>{{ msg }}</li>{% endfor %}</ul>{% endif %}
+{% endwith %}{% block content %}{% endblock %}</main>
+<footer><p>&copy; 2025 Motorbike Shop</p></footer>
+</body></html>
